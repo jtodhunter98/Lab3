@@ -24,7 +24,6 @@ public class password {
 		System.out.println("Between 6-10 characters");
 		System.out.println("One uppercase letter");
 		System.out.println("One numeric value");
-
 		
 		String input = scan.next();//user input
 		scan.close();//close scanner
@@ -32,6 +31,7 @@ public class password {
 		int length = input.length();
 		boolean upperCase = false;
 		boolean correctLength = false;
+		boolean hasNumber = false;
 		
 		if (length >= 6)
 		{
@@ -44,6 +44,11 @@ public class password {
 					if(Character.isUpperCase(x));
 					{
 						upperCase = true;
+						
+						if(Character.isDigit(x))
+						{
+							hasNumber = true;
+						}
 					}
 				}
 			}
@@ -55,8 +60,16 @@ public class password {
 		{
 			if (upperCase == true)
 			{
-				System.out.println("Password saved successfully");
+				if (hasNumber == true)
+				{
+					System.out.println("Password saved successfully");
+				}				
 			}
+		}
+		
+		else
+		{
+			System.out.println("Password does not meet all requirements");
 		}
 		
 		
